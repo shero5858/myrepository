@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dubbo.provider.dao.DeviceMapper">
+  <resultMap id="BaseResultMap" type="com.dubbo.api.entity.Device">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="CHNAME" jdbcType="VARCHAR" property="chname" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="SYSOID" jdbcType="VARCHAR" property="sysoid" />
+    <result column="LOGOIP" jdbcType="VARCHAR" property="logoip" />
+    <result column="PORT" jdbcType="INTEGER" property="port" />
+    <result column="LOCATION" jdbcType="VARCHAR" property="location" />
+    <result column="CONTACT" jdbcType="VARCHAR" property="contact" />
+    <result column="ENTERPRISE" jdbcType="VARCHAR" property="enterprise" />
+    <result column="ENT_OID" jdbcType="VARCHAR" property="entOid" />
+    <result column="VERSION" jdbcType="VARCHAR" property="version" />
+    <result column="IFMANAGE" jdbcType="BIT" property="ifmanage" />
+    <result column="MAC" jdbcType="VARCHAR" property="mac" />
+    <result column="IFIMPORT" jdbcType="BIT" property="ifimport" />
+    <result column="IF_MAC" jdbcType="VARCHAR" property="ifMac" />
+    <result column="SERIALNUM" jdbcType="VARCHAR" property="serialnum" />
+    <result column="OPERATION_TIME" jdbcType="TIMESTAMP" property="operationTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dubbo.api.entity.Device">
+    <result column="DESR" jdbcType="LONGVARCHAR" property="desr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NAME, CHNAME, STATUS, SYSOID, LOGOIP, PORT, LOCATION, CONTACT, ENTERPRISE, ENT_OID, 
+    VERSION, IFMANAGE, MAC, IFIMPORT, IF_MAC, SERIALNUM, OPERATION_TIME
+  </sql>
+  <sql id="Blob_Column_List">
+    DESR
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from device
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from device
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dubbo.api.entity.Device">
+    insert into device (ID, NAME, CHNAME, 
+      STATUS, SYSOID, LOGOIP, 
+      PORT, LOCATION, CONTACT, 
+      ENTERPRISE, ENT_OID, VERSION, 
+      IFMANAGE, MAC, IFIMPORT, IF_MAC, 
+      SERIALNUM, OPERATION_TIME, DESR
+      )
+    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{chname,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{sysoid,jdbcType=VARCHAR}, #{logoip,jdbcType=VARCHAR}, 
+      #{port,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
+      #{enterprise,jdbcType=VARCHAR}, #{entOid,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+      #{ifmanage,jdbcType=BIT}, #{mac,jdbcType=VARCHAR}, #{ifimport,jdbcType=BIT}, #{ifMac,jdbcType=VARCHAR}, 
+      #{serialnum,jdbcType=VARCHAR}, #{operationTime,jdbcType=TIMESTAMP}, #{desr,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dubbo.api.entity.Device">
+    insert into device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="chname != null">
+        CHNAME,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="sysoid != null">
+        SYSOID,
+      </if>
+      <if test="logoip != null">
+        LOGOIP,
+      </if>
+      <if test="port != null">
+        PORT,
+      </if>
+      <if test="location != null">
+        LOCATION,
+      </if>
+      <if test="contact != null">
+        CONTACT,
+      </if>
+      <if test="enterprise != null">
+        ENTERPRISE,
+      </if>
+      <if test="entOid != null">
+        ENT_OID,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+      <if test="ifmanage != null">
+        IFMANAGE,
+      </if>
+      <if test="mac != null">
+        MAC,
+      </if>
+      <if test="ifimport != null">
+        IFIMPORT,
+      </if>
+      <if test="ifMac != null">
+        IF_MAC,
+      </if>
+      <if test="serialnum != null">
+        SERIALNUM,
+      </if>
+      <if test="operationTime != null">
+        OPERATION_TIME,
+      </if>
+      <if test="desr != null">
+        DESR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chname != null">
+        #{chname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sysoid != null">
+        #{sysoid,jdbcType=VARCHAR},
+      </if>
+      <if test="logoip != null">
+        #{logoip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null">
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="enterprise != null">
+        #{enterprise,jdbcType=VARCHAR},
+      </if>
+      <if test="entOid != null">
+        #{entOid,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="ifmanage != null">
+        #{ifmanage,jdbcType=BIT},
+      </if>
+      <if test="mac != null">
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="ifimport != null">
+        #{ifimport,jdbcType=BIT},
+      </if>
+      <if test="ifMac != null">
+        #{ifMac,jdbcType=VARCHAR},
+      </if>
+      <if test="serialnum != null">
+        #{serialnum,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="desr != null">
+        #{desr,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dubbo.api.entity.Device">
+    update device
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chname != null">
+        CHNAME = #{chname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="sysoid != null">
+        SYSOID = #{sysoid,jdbcType=VARCHAR},
+      </if>
+      <if test="logoip != null">
+        LOGOIP = #{logoip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        PORT = #{port,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        LOCATION = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null">
+        CONTACT = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="enterprise != null">
+        ENTERPRISE = #{enterprise,jdbcType=VARCHAR},
+      </if>
+      <if test="entOid != null">
+        ENT_OID = #{entOid,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="ifmanage != null">
+        IFMANAGE = #{ifmanage,jdbcType=BIT},
+      </if>
+      <if test="mac != null">
+        MAC = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="ifimport != null">
+        IFIMPORT = #{ifimport,jdbcType=BIT},
+      </if>
+      <if test="ifMac != null">
+        IF_MAC = #{ifMac,jdbcType=VARCHAR},
+      </if>
+      <if test="serialnum != null">
+        SERIALNUM = #{serialnum,jdbcType=VARCHAR},
+      </if>
+      <if test="operationTime != null">
+        OPERATION_TIME = #{operationTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="desr != null">
+        DESR = #{desr,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dubbo.api.entity.Device">
+    update device
+    set NAME = #{name,jdbcType=VARCHAR},
+      CHNAME = #{chname,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      SYSOID = #{sysoid,jdbcType=VARCHAR},
+      LOGOIP = #{logoip,jdbcType=VARCHAR},
+      PORT = #{port,jdbcType=INTEGER},
+      LOCATION = #{location,jdbcType=VARCHAR},
+      CONTACT = #{contact,jdbcType=VARCHAR},
+      ENTERPRISE = #{enterprise,jdbcType=VARCHAR},
+      ENT_OID = #{entOid,jdbcType=VARCHAR},
+      VERSION = #{version,jdbcType=VARCHAR},
+      IFMANAGE = #{ifmanage,jdbcType=BIT},
+      MAC = #{mac,jdbcType=VARCHAR},
+      IFIMPORT = #{ifimport,jdbcType=BIT},
+      IF_MAC = #{ifMac,jdbcType=VARCHAR},
+      SERIALNUM = #{serialnum,jdbcType=VARCHAR},
+      OPERATION_TIME = #{operationTime,jdbcType=TIMESTAMP},
+      DESR = #{desr,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dubbo.api.entity.Device">
+    update device
+    set NAME = #{name,jdbcType=VARCHAR},
+      CHNAME = #{chname,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=INTEGER},
+      SYSOID = #{sysoid,jdbcType=VARCHAR},
+      LOGOIP = #{logoip,jdbcType=VARCHAR},
+      PORT = #{port,jdbcType=INTEGER},
+      LOCATION = #{location,jdbcType=VARCHAR},
+      CONTACT = #{contact,jdbcType=VARCHAR},
+      ENTERPRISE = #{enterprise,jdbcType=VARCHAR},
+      ENT_OID = #{entOid,jdbcType=VARCHAR},
+      VERSION = #{version,jdbcType=VARCHAR},
+      IFMANAGE = #{ifmanage,jdbcType=BIT},
+      MAC = #{mac,jdbcType=VARCHAR},
+      IFIMPORT = #{ifimport,jdbcType=BIT},
+      IF_MAC = #{ifMac,jdbcType=VARCHAR},
+      SERIALNUM = #{serialnum,jdbcType=VARCHAR},
+      OPERATION_TIME = #{operationTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  
+   <select id="findAllDevice" resultMap="ResultMapWithBLOBs">
+    select * from device
+  </select>
+
+</mapper>

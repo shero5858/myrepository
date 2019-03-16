@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: dubbo-api
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Administrator
+Implementation-Vendor-Id: com.dubbo
+Build-Jdk: 1.8.0_121
+Implementation-URL: http://maven.apache.org/dubbo-api
+Created-By: Maven Integration for Eclipse
+

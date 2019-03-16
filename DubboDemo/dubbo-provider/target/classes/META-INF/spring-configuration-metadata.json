@@ -1,0 +1,11 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.test.ProviderApplication",
+      "name": "classpath:application.properties",
+      "type": "com.test.ProviderApplication"
+    }
+  ],
+  "properties": []
+}
