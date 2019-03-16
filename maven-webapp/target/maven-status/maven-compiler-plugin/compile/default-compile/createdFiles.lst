@@ -1,0 +1,5 @@
+com\myssm\controller\DeviceController.class
+com\myssm\entity\Device.class
+com\myssm\service\impl\DeviceServiceImpl.class
+com\myssm\service\DeviceService.class
+com\myssm\dao\DeviceMapper.class

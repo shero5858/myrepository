@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: test.TestDevice
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 3.044 s <<< FAILURE! - in test.TestDevice
+test(test.TestDevice)  Time elapsed: 2.753 s  <<< ERROR!
+java.lang.IllegalArgumentException: Mapped Statements collection does not contain value for com.myssm.dao.DeviceMapper.selectAllDevice
+	at test.TestDevice.test(TestDevice.java:19)
+
